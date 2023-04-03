@@ -32,9 +32,7 @@ public class UserDaoImp implements UserDao {
     @Override
     @SuppressWarnings("unchecked")
     public User getUser(Long id) {
-        TypedQuery<User> query = entityManager.createQuery("SELECT u FROM User u WHERE u.id = :id", User.class)
-                .setParameter("id", id);
-        return query.getSingleResult();
+        return entityManager.find(User.class, id);
     }
     @Override
     @SuppressWarnings("unchecked")
