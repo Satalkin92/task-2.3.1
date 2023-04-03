@@ -1,6 +1,9 @@
 package web.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "users")
@@ -8,10 +11,15 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @NotEmpty(message = "This field can not be empty!")
+    @Size(min = 3, max = 20, message = "Invalid value!")
     @Column(name = "first_name")
     private String firstName;
+    @NotEmpty(message = "This field can not be empty!")
+    @Size(min = 3, max = 20, message = "Invalid value!")
     @Column(name = "last_name")
     private String lastName;
+    @Min(value = 1, message = "This value can not be negative!")
     @Column(name = "age")
     private int age;
 
